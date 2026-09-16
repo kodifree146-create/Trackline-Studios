@@ -1,0 +1,1656 @@
+  html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Network | Trackline Studios</title>
+
+    <meta
+        name="description"
+        content="Explore the railway network behind Trackline Studios."
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* =====================================================
+           NETWORK HERO VISUAL
+           ===================================================== */
+
+        .network-visual {
+            position: relative;
+            width: 100%;
+            min-height: 540px;
+            padding: 28px;
+            overflow: hidden;
+
+            border: 1px solid rgba(255,255,255,.105);
+            border-radius: 32px;
+
+            background: rgba(255,255,255,.055);
+            box-shadow:
+                0 30px 80px rgba(0,0,0,.28),
+                inset 0 1px 0 rgba(255,255,255,.06);
+
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+
+        .network-visual-header {
+            position: relative;
+            z-index: 10;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .network-visual-header > div {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .network-visual .visual-label {
+            display: block;
+
+            color: #687588;
+
+            font-size: .65rem;
+            font-weight: 800;
+            letter-spacing: .18em;
+        }
+
+        .network-visual-header strong {
+            display: block;
+
+            color: #f5f8fc;
+
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: .08em;
+        }
+
+        .network-visual .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 8px 12px;
+
+            border: 1px solid rgba(92,230,162,.25);
+            border-radius: 999px;
+
+            background: rgba(92,230,162,.07);
+
+            color: #5ce6a2;
+
+            font-size: .62rem;
+            font-weight: 800;
+            letter-spacing: .12em;
+        }
+
+        .live-indicator span {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #5ce6a2;
+
+            box-shadow:
+                0 0 12px rgba(92,230,162,.8);
+        }
+
+
+        /* =====================================================
+           MAP
+           ===================================================== */
+
+        .network-map {
+            position: relative;
+
+            width: 100%;
+            height: 390px;
+
+            margin-top: 18px;
+
+            overflow: hidden;
+
+            border: 1px solid rgba(255,255,255,.06);
+            border-radius: 24px;
+
+            background-color: rgba(4,7,12,.7);
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,.025) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.025) 1px,
+                    transparent 1px
+                );
+
+            background-size: 32px 32px;
+        }
+
+        .network-map::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at 50% 50%,
+                    rgba(105,216,255,.08),
+                    transparent 58%
+                );
+
+            pointer-events: none;
+        }
+
+
+        /* =====================================================
+           RAILWAY LINES
+           ===================================================== */
+
+        .network-map .map-line {
+            position: absolute;
+
+            z-index: 2;
+
+            height: 2px;
+
+            transform-origin: left center;
+
+            background: linear-gradient(
+                90deg,
+                rgba(105,216,255,.12),
+                rgba(105,216,255,.85),
+                rgba(156,124,255,.55)
+            );
+
+            box-shadow:
+                0 0 14px rgba(105,216,255,.25);
+        }
+
+        .network-map .line-main {
+            width: 72%;
+            left: 14%;
+            top: 54%;
+            transform: rotate(-8deg);
+        }
+
+        .network-map .line-north {
+            width: 45%;
+            left: 49%;
+            top: 51%;
+            transform: rotate(-63deg);
+        }
+
+        .network-map .line-west {
+            width: 43%;
+            left: 25%;
+            top: 57%;
+            transform: rotate(165deg);
+        }
+
+        .network-map .line-south {
+            width: 42%;
+            left: 49%;
+            top: 58%;
+            transform: rotate(65deg);
+        }
+
+
+        /* =====================================================
+           STATIONS
+           ===================================================== */
+
+        .network-map .map-node {
+            position: absolute;
+
+            z-index: 8;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            color: #aab5c5;
+
+            font-size: .67rem;
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+        .network-map .map-node span {
+            display: block;
+
+            width: 10px;
+            height: 10px;
+
+            flex-shrink: 0;
+
+            border: 2px solid #69d8ff;
+            border-radius: 50%;
+
+            background: #04070c;
+
+            box-shadow:
+                0 0 0 4px rgba(105,216,255,.08),
+                0 0 18px rgba(105,216,255,.65);
+        }
+
+        .network-map .node-sydney {
+            left: 48%;
+            top: 50%;
+        }
+
+        .network-map .node-newcastle {
+            right: 10%;
+            top: 27%;
+        }
+
+        .network-map .node-dungog {
+            right: 16%;
+            top: 9%;
+        }
+
+        .network-map .node-central {
+            left: 15%;
+            top: 69%;
+        }
+
+        .network-map .node-west {
+            left: 7%;
+            top: 37%;
+        }
+
+
+        /* =====================================================
+           TRAIN MARKERS
+           ===================================================== */
+
+        .network-map .map-train {
+            position: absolute;
+
+            z-index: 9;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 27px;
+            height: 27px;
+
+            border: 1px solid rgba(105,216,255,.4);
+            border-radius: 9px;
+
+            background: rgba(105,216,255,.1);
+
+            color: #69d8ff;
+
+            box-shadow:
+                0 0 20px rgba(105,216,255,.18);
+
+            animation: networkTrainMove 7s linear infinite;
+        }
+
+        .network-map .map-train span {
+            font-size: .65rem;
+        }
+
+        .network-map .train-one {
+            left: 25%;
+            top: 51%;
+        }
+
+        .network-map .train-two {
+            left: 61%;
+            top: 47%;
+            animation-delay: 3.5s;
+        }
+
+        @keyframes networkTrainMove {
+            0% {
+                transform: translateX(-25px);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateX(100px);
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(220px);
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================================
+           VISUAL FOOTER
+           ===================================================== */
+
+        .network-visual-footer {
+            position: relative;
+            z-index: 10;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+
+            margin-top: 18px;
+            padding-top: 20px;
+
+            border-top: 1px solid rgba(255,255,255,.105);
+        }
+
+        .network-visual-footer div {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .network-visual-footer span {
+            color: #687588;
+
+            font-size: .6rem;
+            font-weight: 800;
+            letter-spacing: .16em;
+        }
+
+        .network-visual-footer strong {
+            color: #aab5c5;
+
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .04em;
+        }
+
+
+        /* =====================================================
+           NETWORK CONTENT
+           ===================================================== */
+
+        .network-corridors {
+            display: grid;
+            gap: 18px;
+        }
+
+        .network-corridor {
+            position: relative;
+
+            display: grid;
+            grid-template-columns: 70px 1fr auto;
+            align-items: center;
+            gap: 30px;
+
+            padding: 32px;
+
+            border: 1px solid rgba(255,255,255,.105);
+            border-radius: 28px;
+
+            background: rgba(255,255,255,.055);
+
+            transition:
+                transform .3s ease,
+                border-color .3s ease,
+                background .3s ease;
+        }
+
+        .network-corridor:hover {
+            transform: translateY(-4px);
+
+            border-color: rgba(255,255,255,.17);
+
+            background: rgba(255,255,255,.085);
+        }
+
+        .corridor-number {
+            color: #687588;
+
+            font-size: .75rem;
+            font-weight: 800;
+            letter-spacing: .12em;
+        }
+
+        .corridor-region {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #69d8ff;
+
+            font-size: .63rem;
+            font-weight: 800;
+            letter-spacing: .15em;
+        }
+
+        .corridor-content h3 {
+            margin: 0 0 10px;
+
+            color: #f5f8fc;
+
+            font-size: 1.35rem;
+        }
+
+        .corridor-content p {
+            max-width: 720px;
+            margin: 0;
+
+            color: #aab5c5;
+
+            line-height: 1.7;
+        }
+
+        .corridor-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+
+            margin-top: 18px;
+        }
+
+        .corridor-tags span {
+            padding: 6px 9px;
+
+            border: 1px solid rgba(255,255,255,.105);
+            border-radius: 999px;
+
+            color: #687588;
+
+            font-size: .57rem;
+            font-weight: 800;
+            letter-spacing: .1em;
+        }
+
+        .corridor-arrow {
+            color: #69d8ff;
+            font-size: 1.5rem;
+        }
+
+
+        /* =====================================================
+           SYSTEMS
+           ===================================================== */
+
+        .network-systems {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 60px;
+
+            padding: 60px;
+
+            border: 1px solid rgba(255,255,255,.105);
+            border-radius: 34px;
+
+            background: rgba(255,255,255,.055);
+
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+
+        .network-systems-heading h2 {
+            margin: 10px 0 18px;
+        }
+
+        .network-systems-heading > p:last-child {
+            max-width: 440px;
+            margin: 0;
+
+            color: #aab5c5;
+
+            line-height: 1.75;
+        }
+
+        .systems-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .network-system {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+
+            padding: 20px;
+
+            border: 1px solid rgba(255,255,255,.105);
+            border-radius: 20px;
+
+            background: rgba(255,255,255,.025);
+        }
+
+        .system-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex: 0 0 34px;
+
+            width: 34px;
+            height: 34px;
+
+            border: 1px solid rgba(105,216,255,.2);
+            border-radius: 10px;
+
+            background: rgba(105,216,255,.06);
+
+            color: #69d8ff;
+        }
+
+        .network-system strong {
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #f5f8fc;
+        }
+
+        .network-system p {
+            margin: 0;
+
+            color: #687588;
+
+            font-size: .75rem;
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           DEVELOPMENT PANEL
+           ===================================================== */
+
+        .network-development {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 60px;
+            align-items: center;
+
+            padding: 65px;
+
+            border: 1px solid rgba(255,255,255,.105);
+            border-radius: 34px;
+
+            background: rgba(255,255,255,.055);
+
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+
+        .network-development-content h2 {
+            margin: 10px 0 18px;
+        }
+
+        .network-development-content > p:not(.eyebrow) {
+            max-width: 650px;
+            margin: 0;
+
+            color: #aab5c5;
+
+            line-height: 1.75;
+        }
+
+        .network-development-content .hero-actions {
+            margin-top: 30px;
+        }
+
+        .network-development-status {
+            display: grid;
+            gap: 12px;
+        }
+
+        .status-card {
+            padding: 22px;
+
+            border: 1px solid rgba(255,255,255,.105);
+            border-radius: 20px;
+
+            background: rgba(255,255,255,.025);
+        }
+
+        .status-card-label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #687588;
+
+            font-size: .62rem;
+            font-weight: 800;
+            letter-spacing: .13em;
+        }
+
+        .status-card strong {
+            display: block;
+
+            margin-bottom: 14px;
+
+            color: #69d8ff;
+
+            font-size: .8rem;
+            letter-spacing: .08em;
+        }
+
+        .status-card-bar {
+            width: 100%;
+            height: 4px;
+
+            overflow: hidden;
+
+            border-radius: 999px;
+
+            background: rgba(255,255,255,.07);
+        }
+
+        .status-card-bar span {
+            display: block;
+
+            height: 100%;
+
+            border-radius: inherit;
+
+            background: linear-gradient(
+                90deg,
+                #69d8ff,
+                #9c7cff
+            );
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .network-systems {
+                grid-template-columns: 1fr;
+            }
+
+            .network-development {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 760px) {
+
+            .network-visual {
+                min-height: 500px;
+                padding: 20px;
+            }
+
+            .network-visual-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .network-map {
+                height: 350px;
+            }
+
+            .network-visual-footer {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .network-corridor {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                padding: 25px;
+            }
+
+            .corridor-arrow {
+                display: none;
+            }
+
+            .network-systems,
+            .network-development {
+                padding: 35px 25px;
+            }
+
+            .systems-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .network-map {
+                height: 320px;
+            }
+
+            .network-map .map-node {
+                font-size: .56rem;
+            }
+
+            .network-map .node-west {
+                left: 3%;
+            }
+
+            .network-map .node-central {
+                left: 7%;
+            }
+
+            .network-map .node-newcastle {
+                right: 3%;
+            }
+
+            .network-map .node-dungog {
+                right: 5%;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="background-grid"></div>
+    <div class="background-orb orb-one"></div>
+    <div class="background-orb orb-two"></div>
+    <div class="background-orb orb-three"></div>
+
+    <div class="cursor-glow"></div>
+
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <header class="site-header">
+
+        <div class="container">
+
+            <nav class="glass-nav">
+
+                <a href="index.html" class="brand">
+                    <span class="brand-mark">TS</span>
+
+                    <span class="brand-text">
+                        <strong>Trackline</strong>
+                        <span>Studios</span>
+                    </span>
+                </a>
+
+
+                <div class="nav-links">
+
+                    <a href="index.html">Home</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="network.html" class="active">Network</a>
+                    <a href="development.html">Development</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+
+                </div>
+
+
+                <a href="projects.html" class="nav-action">
+                    Explore
+                    <span>→</span>
+                </a>
+
+
+                <button
+                    class="mobile-menu-button"
+                    type="button"
+                    aria-label="Open navigation"
+                    aria-expanded="false"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </nav>
+
+
+            <div class="mobile-navigation">
+
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="network.html" class="active">Network</a>
+                <a href="development.html">Development</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
+    <main>
+
+
+        <!-- HERO -->
+
+        <section class="section hero network-hero">
+
+            <div class="hero-content reveal">
+
+                <div class="status-pill">
+                    <span class="status-dot"></span>
+                    NSW RAIL NETWORK
+                </div>
+
+                <p class="eyebrow">
+                    THE NETWORK
+                </p>
+
+                <h1>
+                    The network
+                    <span class="gradient-text">
+                        behind it all.
+                    </span>
+                </h1>
+
+                <p class="hero-description">
+                    A railway is more than a line on a map.
+                    It's stations, junctions, signals, bridges,
+                    rolling stock, operations and decades of history
+                    connecting everything together.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a
+                        href="#network-overview"
+                        class="button button-primary"
+                    >
+                        Explore network
+                        <span class="button-icon">↓</span>
+                    </a>
+
+                    <a
+                        href="development.html"
+                        class="button button-secondary"
+                    >
+                        View development
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- NETWORK DASHBOARD -->
+
+            <div class="hero-visual reveal">
+
+                <div class="network-visual">
+
+                    <div class="network-visual-header">
+
+                        <div>
+
+                            <span class="visual-label">
+                                NETWORK STATUS
+                            </span>
+
+                            <strong>
+                                NSW RAILWAYS
+                            </strong>
+
+                        </div>
+
+                        <span class="live-indicator">
+
+                            <span></span>
+
+                            ACTIVE
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="network-map">
+
+                        <div class="map-line line-main"></div>
+                        <div class="map-line line-north"></div>
+                        <div class="map-line line-west"></div>
+                        <div class="map-line line-south"></div>
+
+
+                        <div class="map-node node-sydney">
+                            <span></span>
+                            Sydney
+                        </div>
+
+                        <div class="map-node node-newcastle">
+                            <span></span>
+                            Newcastle
+                        </div>
+
+                        <div class="map-node node-dungog">
+                            <span></span>
+                            Dungog
+                        </div>
+
+                        <div class="map-node node-central">
+                            <span></span>
+                            Central
+                        </div>
+
+                        <div class="map-node node-west">
+                            <span></span>
+                            West
+                        </div>
+
+
+                        <div class="map-train train-one">
+                            <span>▸</span>
+                        </div>
+
+                        <div class="map-train train-two">
+                            <span>▸</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="network-visual-footer">
+
+                        <div>
+
+                            <span>
+                                REGION
+                            </span>
+
+                            <strong>
+                                NEW SOUTH WALES
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                FOCUS
+                            </span>
+
+                            <strong>
+                                RAILWAY SYSTEMS
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             NETWORK OVERVIEW
+             ===================================================== -->
+
+        <section
+            class="section"
+            id="network-overview"
+        >
+
+            <div class="section-heading reveal">
+
+                <p class="eyebrow">
+                    NETWORK OVERVIEW
+                </p>
+
+                <h2>
+                    One network.
+                    <span class="gradient-text">
+                        Thousands of details.
+                    </span>
+                </h2>
+
+                <p>
+                    Trackline Studios focuses on the details that make
+                    railway environments feel connected, believable
+                    and alive.
+                </p>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+                <article class="feature-card glass-card reveal">
+
+                    <span class="feature-number">01</span>
+
+                    <h3>
+                        Corridors
+                    </h3>
+
+                    <p>
+                        Major railway corridors form the backbone of
+                        passenger, freight and regional services.
+                    </p>
+
+                </article>
+
+
+                <article class="feature-card glass-card reveal">
+
+                    <span class="feature-number">02</span>
+
+                    <h3>
+                        Stations
+                    </h3>
+
+                    <p>
+                        Every station has its own layout, architecture,
+                        platforms, signage and history.
+                    </p>
+
+                </article>
+
+
+                <article class="feature-card glass-card reveal">
+
+                    <span class="feature-number">03</span>
+
+                    <h3>
+                        Infrastructure
+                    </h3>
+
+                    <p>
+                        Bridges, signals, level crossings and trackside
+                        equipment complete the railway.
+                    </p>
+
+                </article>
+
+
+                <article class="feature-card glass-card reveal">
+
+                    <span class="feature-number">04</span>
+
+                    <h3>
+                        Rolling stock
+                    </h3>
+
+                    <p>
+                        Passenger, freight and heritage trains are all
+                        part of the network's identity.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             CORRIDORS
+             ===================================================== -->
+
+        <section class="section">
+
+            <div class="section-heading reveal">
+
+                <p class="eyebrow">
+                    CORRIDORS
+                </p>
+
+                <h2>
+                    Following the
+                    <span class="gradient-text">
+                        tracks.
+                    </span>
+                </h2>
+
+                <p>
+                    From major metropolitan corridors to regional and
+                    historic routes.
+                </p>
+
+            </div>
+
+
+            <div class="network-corridors">
+
+
+                <article class="network-corridor reveal">
+
+                    <div class="corridor-number">
+                        01
+                    </div>
+
+                    <div class="corridor-content">
+
+                        <span class="corridor-region">
+                            HUNTER REGION
+                        </span>
+
+                        <h3>
+                            Newcastle → Dungog
+                        </h3>
+
+                        <p>
+                            A major focus for Trackline railway
+                            development, connecting the Newcastle
+                            region with the Hunter and regional
+                            railway network.
+                        </p>
+
+                        <div class="corridor-tags">
+                            <span>REGIONAL</span>
+                            <span>HUNTER</span>
+                            <span>TRACKLINE</span>
+                        </div>
+
+                    </div>
+
+                    <div class="corridor-arrow">
+                        →
+                    </div>
+
+                </article>
+
+
+                <article class="network-corridor reveal">
+
+                    <div class="corridor-number">
+                        02
+                    </div>
+
+                    <div class="corridor-content">
+
+                        <span class="corridor-region">
+                            SYDNEY REGION
+                        </span>
+
+                        <h3>
+                            Sydney metropolitan network
+                        </h3>
+
+                        <p>
+                            A dense railway environment of stations,
+                            junctions, electrified corridors and
+                            complex operations.
+                        </p>
+
+                        <div class="corridor-tags">
+                            <span>METRO</span>
+                            <span>ELECTRIFIED</span>
+                            <span>ACTIVE</span>
+                        </div>
+
+                    </div>
+
+                    <div class="corridor-arrow">
+                        →
+                    </div>
+
+                </article>
+
+
+                <article class="network-corridor reveal">
+
+                    <div class="corridor-number">
+                        03
+                    </div>
+
+                    <div class="corridor-content">
+
+                        <span class="corridor-region">
+                            HISTORIC NETWORK
+                        </span>
+
+                        <h3>
+                            Abandoned & historic lines
+                        </h3>
+
+                        <p>
+                            Former railway corridors, closed stations
+                            and infrastructure remnants preserve
+                            another layer of New South Wales railway
+                            history.
+                        </p>
+
+                        <div class="corridor-tags">
+                            <span>HISTORY</span>
+                            <span>HERITAGE</span>
+                            <span>MAPPING</span>
+                        </div>
+
+                    </div>
+
+                    <div class="corridor-arrow">
+                        →
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SYSTEMS
+             ===================================================== -->
+
+        <section class="section">
+
+            <div class="network-systems reveal">
+
+                <div class="network-systems-heading">
+
+                    <p class="eyebrow">
+                        WHAT MAKES A RAILWAY
+                    </p>
+
+                    <h2>
+                        More than
+                        <span class="gradient-text">
+                            track.
+                        </span>
+                    </h2>
+
+                    <p>
+                        A convincing railway environment depends on
+                        hundreds of interconnected systems and details.
+                    </p>
+
+                </div>
+
+
+                <div class="systems-grid">
+
+                    <div class="network-system">
+
+                        <span class="system-icon">
+                            ═
+                        </span>
+
+                        <div>
+                            <strong>Track</strong>
+                            <p>Rails, sleepers, ballast and geometry.</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="network-system">
+
+                        <span class="system-icon">
+                            ◉
+                        </span>
+
+                        <div>
+                            <strong>Stations</strong>
+                            <p>Platforms, buildings and passenger areas.</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="network-system">
+
+                        <span class="system-icon">
+                            ◆
+                        </span>
+
+                        <div>
+                            <strong>Signalling</strong>
+                            <p>Signals, indicators and operational logic.</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="network-system">
+
+                        <span class="system-icon">
+                            +
+                        </span>
+
+                        <div>
+                            <strong>Infrastructure</strong>
+                            <p>Bridges, crossings and railway structures.</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="network-system">
+
+                        <span class="system-icon">
+                            ▸
+                        </span>
+
+                        <div>
+                            <strong>Rolling stock</strong>
+                            <p>Passenger, freight and heritage trains.</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="network-system">
+
+                        <span class="system-icon">
+                            ≋
+                        </span>
+
+                        <div>
+                            <strong>Operations</strong>
+                            <p>Services, movements and railway activity.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             DEVELOPMENT
+             ===================================================== -->
+
+        <section class="section">
+
+            <div class="network-development reveal">
+
+                <div class="network-development-content">
+
+                    <p class="eyebrow">
+                        CURRENT FOCUS
+                    </p>
+
+                    <h2>
+                        Mapping the railway,
+                        <span class="gradient-text">
+                            one detail at a time.
+                        </span>
+                    </h2>
+
+                    <p>
+                        Trackline is currently focused on realistic
+                        railway environments, network mapping and the
+                        systems that connect everything together.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a
+                            href="development.html"
+                            class="button button-primary"
+                        >
+                            View development
+                            <span class="button-icon">→</span>
+                        </a>
+
+                        <a
+                            href="projects.html"
+                            class="button button-secondary"
+                        >
+                            View projects
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="network-development-status">
+
+                    <div class="status-card">
+
+                        <span class="status-card-label">
+                            NETWORK MAPPING
+                        </span>
+
+                        <strong>
+                            BUILDING
+                        </strong>
+
+                        <div class="status-card-bar">
+                            <span style="width:78%;"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-card">
+
+                        <span class="status-card-label">
+                            RAILWAY SYSTEMS
+                        </span>
+
+                        <strong>
+                            BUILDING
+                        </strong>
+
+                        <div class="status-card-bar">
+                            <span style="width:62%;"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-card">
+
+                        <span class="status-card-label">
+                            HISTORIC MAPPING
+                        </span>
+
+                        <strong>
+                            RESEARCH
+                        </strong>
+
+                        <div class="status-card-bar">
+                            <span style="width:46%;"></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             CTA
+             ===================================================== -->
+
+        <section class="section cta-section">
+
+            <div class="cta-card glass-card reveal">
+
+                <div class="cta-glow"></div>
+
+                <div class="cta-content">
+
+                    <p class="eyebrow">
+                        KEEP MOVING
+                    </p>
+
+                    <h2>
+                        There's always
+                        <span class="gradient-text">
+                            another line.
+                        </span>
+                    </h2>
+
+                    <p>
+                        Explore the projects behind Trackline Studios
+                        or see how the railway network is being brought
+                        together.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a
+                            href="projects.html"
+                            class="button button-primary"
+                        >
+                            View projects
+                            <span class="button-icon">→</span>
+                        </a>
+
+                        <a
+                            href="development.html"
+                            class="button button-secondary"
+                        >
+                            Development
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-inner">
+
+                <div class="footer-brand">
+
+                    <a href="index.html" class="brand">
+
+                        <span class="brand-mark">
+                            TS
+                        </span>
+
+                        <span class="brand-text">
+                            <strong>Trackline</strong>
+                            <span>Studios</span>
+                        </span>
+
+                    </a>
+
+                    <p>
+                        Building railway experiences with
+                        authenticity, detail and atmosphere.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-links">
+
+                    <div>
+
+                        <span class="footer-heading">
+                            EXPLORE
+                        </span>
+
+                        <a href="projects.html">
+                            Projects
+                        </a>
+
+                        <a href="network.html">
+                            Network
+                        </a>
+
+                        <a href="development.html">
+                            Development
+                        </a>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="footer-heading">
+                            STUDIO
+                        </span>
+
+                        <a href="about.html">
+                            About
+                        </a>
+
+                        <a href="contact.html">
+                            Contact
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © <span id="current-year"></span>
+                    Trackline Studios
+                </span>
+
+                <span>
+                    NSW · AUSTRALIA
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/app.js"></script>
+
+</body>
+</html>
+  
