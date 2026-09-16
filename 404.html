@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    ```
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Trackline Studios page not found.">
+
+    <title>404 | Trackline Studios</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+         /* =====================================================
+        Trackline Studios | 404 Page
+        ===================================================== */
+
+         .error-page {
+             min-height: 100vh;
+             min-height: 100svh;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             padding: 120px 24px 60px;
+             text-align: center;
+         }
+
+         .error-container {
+             width: 100%;
+             max-width: 760px;
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+         }
+
+         .error-code {
+             position: relative;
+             margin: 20px 0 0;
+             font-size: clamp(8rem, 22vw, 15rem);
+             line-height: .8;
+             font-weight: 800;
+             letter-spacing: -.09em;
+             color: rgba(255, 255, 255, .045);
+             user-select: none;
+         }
+
+             .error-code::after {
+                 content: "404";
+                 position: absolute;
+                 inset: 0;
+                 display: flex;
+                 align-items: center;
+                 justify-content: center;
+                 color: transparent;
+                 background: linear-gradient( 135deg, #ffffff 10%, #8ea8ff 45%, #72e5ff 90% );
+                 -webkit-background-clip: text;
+                 background-clip: text;
+                 opacity: .95;
+             }
+
+         .error-content {
+             position: relative;
+             z-index: 2;
+             margin-top: -18px;
+             width: min(100%, 620px);
+             padding: 42px;
+             border: 1px solid rgba(255, 255, 255, .09);
+             border-radius: 28px;
+             background: rgba(255, 255, 255, .045);
+             backdrop-filter: blur(22px);
+             -webkit-backdrop-filter: blur(22px);
+             box-shadow: 0 30px 90px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .08);
+         }
+
+             .error-content h1 {
+                 margin: 0 0 16px;
+                 font-size: clamp(2rem, 5vw, 3.4rem);
+                 line-height: 1.05;
+                 letter-spacing: -.045em;
+             }
+
+             .error-content p {
+                 max-width: 500px;
+                 margin: 0 auto;
+                 color: rgba(255, 255, 255, .62);
+                 font-size: 1.05rem;
+                 line-height: 1.7;
+             }
+
+         .error-status {
+             display: inline-flex;
+             align-items: center;
+             gap: 9px;
+             margin-bottom: 22px;
+             padding: 8px 13px;
+             border: 1px solid rgba(255, 255, 255, .08);
+             border-radius: 999px;
+             background: rgba(255, 255, 255, .045);
+             color: rgba(255, 255, 255, .62);
+             font-size: .72rem;
+             font-weight: 700;
+             letter-spacing: .12em;
+             text-transform: uppercase;
+         }
+
+             .error-status .status-dot {
+                 width: 7px;
+                 height: 7px;
+                 flex: 0 0 7px;
+                 border-radius: 50%;
+                 background: #ffb86b;
+                 box-shadow: 0 0 12px rgba(255, 184, 107, .8);
+             }
+
+         .error-actions {
+             display: flex;
+             justify-content: center;
+             flex-wrap: wrap;
+             gap: 12px;
+             margin-top: 30px;
+         }
+
+         .error-route {
+             margin-top: 28px;
+             font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+             font-size: .72rem;
+             letter-spacing: .04em;
+             color: rgba(255, 255, 255, .28);
+         }
+
+             .error-route span {
+                 color: rgba(255, 255, 255, .5);
+             }
+
+         .error-rail {
+             position: relative;
+             width: min(560px, 80vw);
+             height: 34px;
+             margin: 35px auto 0;
+             opacity: .4;
+         }
+
+             .error-rail::before,
+             .error-rail::after {
+                 content: "";
+                 position: absolute;
+                 left: 0;
+                 right: 0;
+                 height: 2px;
+                 background: rgba(255, 255, 255, .22);
+             }
+
+             .error-rail::before {
+                 top: 9px;
+             }
+
+             .error-rail::after {
+                 bottom: 9px;
+             }
+
+         .error-sleeper {
+             position: absolute;
+             top: 3px;
+             bottom: 3px;
+             width: 4px;
+             border-radius: 2px;
+             background: rgba(255, 255, 255, .18);
+         }
+
+             .error-sleeper:nth-child(1) {
+                 left: 5%;
+             }
+
+             .error-sleeper:nth-child(2) {
+                 left: 20%;
+             }
+
+             .error-sleeper:nth-child(3) {
+                 left: 35%;
+             }
+
+             .error-sleeper:nth-child(4) {
+                 left: 50%;
+             }
+
+             .error-sleeper:nth-child(5) {
+                 left: 65%;
+             }
+
+             .error-sleeper:nth-child(6) {
+                 left: 80%;
+             }
+
+             .error-sleeper:nth-child(7) {
+                 left: 95%;
+             }
+
+         @media (max-width: 600px) {
+
+             .error-page {
+                 padding: 110px 18px 40px;
+             }
+
+             .error-code {
+                 font-size: 8rem;
+             }
+
+             .error-content {
+                 padding: 32px 22px;
+                 border-radius: 22px;
+             }
+
+                 .error-content h1 {
+                     font-size: 2rem;
+                 }
+
+                 .error-content p {
+                     font-size: .95rem;
+                 }
+
+             .error-actions {
+                 flex-direction: column;
+                 width: 100%;
+             }
+
+                 .error-actions .button {
+                     width: 100%;
+                 }
+         }
+
+         @media (prefers-reduced-motion: reduce) {
+
+             .error-code,
+             .error-content {
+                 animation: none !important;
+             }
+         }
+    </style>
+    ```
+
+</head>
+
+<body>
+
+    ```
+    <!-- Background -->
+    <div class="background" aria-hidden="true">
+        <div class="background-gradient"></div>
+
+        <div class="background-orb background-orb-one"></div>
+        <div class="background-orb background-orb-two"></div>
+        <div class="background-orb background-orb-three"></div>
+
+        <div class="background-grid"></div>
+    </div>
+
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+
+    <!-- Header -->
+    <header class="site-header">
+
+        <nav class="glass-nav">
+
+            <a href="index.html"
+               class="brand"
+               aria-label="Trackline Studios home">
+                <span class="brand-mark">TL</span>
+
+                <span class="brand-name">
+                    Trackline
+                    <span class="brand-studios">Studios</span>
+                </span>
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="network.html">Network</a>
+                <a href="development.html">Development</a>
+                <a href="about.html">About</a>
+
+            </div>
+
+
+            <a href="contact.html" class="nav-action">
+                Contact
+            </a>
+
+
+            <button class="mobile-menu-button"
+                    type="button"
+                    aria-label="Open navigation"
+                    aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </nav>
+
+
+        <div class="mobile-navigation">
+
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="network.html">Network</a>
+            <a href="development.html">Development</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+    </header>
+
+
+    <!-- 404 -->
+    <main class="error-page">
+
+        <div class="error-container">
+
+            <div class="error-status">
+                <span class="status-dot"></span>
+                ROUTE NOT FOUND
+            </div>
+
+
+            <div class="error-code" aria-hidden="true">
+                404
+            </div>
+
+
+            <div class="error-content">
+
+                <p class="eyebrow">
+                    SIGNAL LOST
+                </p>
+
+                <h1>
+                    This track doesn't exist.
+                </h1>
+
+                <p>
+                    The page you're looking for has either been moved,
+                    removed, or was never built in the first place.
+                    Even the railway network has limits.
+                </p>
+
+
+                <div class="error-actions">
+
+                    <a href="index.html"
+                       class="button button-primary">
+                        Return home
+                        <span class="button-icon">→</span>
+                    </a>
+
+                    <a href="projects.html"
+                       class="button button-secondary">
+                        View projects
+                    </a>
+
+                </div>
+
+
+                <div class="error-route">
+                    ROUTE STATUS:
+                    <span>NO SUCH DESTINATION</span>
+                </div>
+
+            </div>
+
+
+            <div class="error-rail" aria-hidden="true">
+
+                <span class="error-sleeper"></span>
+                <span class="error-sleeper"></span>
+                <span class="error-sleeper"></span>
+                <span class="error-sleeper"></span>
+                <span class="error-sleeper"></span>
+                <span class="error-sleeper"></span>
+                <span class="error-sleeper"></span>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+
+        <div class="footer-bottom">
+
+            <span>
+                © <span id="current-year"></span> Trackline Studios
+            </span>
+
+            <span>
+                NSW / AUSTRALIA
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/app.js"></script>
+    ```
+
+</body>
+</html>
